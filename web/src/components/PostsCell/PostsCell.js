@@ -1,6 +1,6 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router';
 
-import Posts from 'src/components/Posts'
+import Posts from 'src/components/Posts';
 
 export const QUERY = gql`
   query POSTS {
@@ -11,9 +11,9 @@ export const QUERY = gql`
       createdAt
     }
   }
-`
+`;
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div>Loading...</div>;
 
 export const Empty = () => {
   return (
@@ -23,9 +23,9 @@ export const Empty = () => {
         {'Create one?'}
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export const Success = ({ posts }) => {
-  return <Posts posts={posts} />
-}
+  return <Posts posts={posts} />;
+};

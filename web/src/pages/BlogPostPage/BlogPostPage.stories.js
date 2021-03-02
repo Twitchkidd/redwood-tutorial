@@ -1,7 +1,7 @@
-import BlogPostPage from './BlogPostPage'
+import BlogPostPage from './BlogPostPage';
 
 export const generated = () => {
-  return <BlogPostPage />
-}
+  return <BlogPostPage />;
+};
 
-export default { title: 'Pages/BlogPostPage' }
+export default { title: 'Pages/BlogPostPage' };

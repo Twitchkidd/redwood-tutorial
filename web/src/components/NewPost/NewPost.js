@@ -1,6 +1,6 @@
-import { useMutation, useFlash } from '@redwoodjs/web'
-import { navigate, routes } from '@redwoodjs/router'
-import PostForm from 'src/components/PostForm'
+import { useMutation, useFlash } from '@redwoodjs/web';
+import { navigate, routes } from '@redwoodjs/router';
+import PostForm from 'src/components/PostForm';
 
 const CREATE_POST_MUTATION = gql`
   mutation CreatePostMutation($input: CreatePostInput!) {
@@ -8,20 +8,20 @@ const CREATE_POST_MUTATION = gql`
       id
     }
   }
-`
+`;
 
 const NewPost = () => {
-  const { addMessage } = useFlash()
+  const { addMessage } = useFlash();
   const [createPost, { loading, error }] = useMutation(CREATE_POST_MUTATION, {
     onCompleted: () => {
-      navigate(routes.posts())
-      addMessage('Post created.', { classes: 'rw-flash-success' })
+      navigate(routes.posts());
+      addMessage('Post created.', { classes: 'rw-flash-success' });
     },
-  })
+  });
 
   const onSave = (input) => {
-    createPost({ variables: { input } })
-  }
+    createPost({ variables: { input } });
+  };
 
   return (
     <div className="rw-segment">
@@ -32,7 +32,7 @@ const NewPost = () => {
         <PostForm onSave={onSave} loading={loading} error={error} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewPost
+export default NewPost;

@@ -5,12 +5,12 @@ import {
   Label,
   TextField,
   Submit,
-} from '@redwoodjs/forms'
+} from '@redwoodjs/forms';
 
 const PostForm = (props) => {
   const onSubmit = (data) => {
-    props.onSave(data, props?.post?.id)
-  }
+    props.onSave(data, props?.post?.id);
+  };
 
   return (
     <div className="rw-form-wrapper">
@@ -61,7 +61,7 @@ const PostForm = (props) => {
         </div>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default PostForm
+export default PostForm;

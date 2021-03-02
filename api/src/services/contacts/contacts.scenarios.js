@@ -6,4 +6,4 @@ export const standard = defineScenario({
       message: 'I love RedwoodJS',
     },
   },
-})
+});

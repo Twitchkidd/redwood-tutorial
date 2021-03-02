@@ -55,7 +55,7 @@
 // The function `getCurrentUser` should return the user information
 // together with a collection of roles to check for role assignment:
 
-import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
+import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api';
 
 /**
  * Use requireAuth in your services to check that a user is logged in,
@@ -98,8 +98,8 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  * }
  */
 export const getCurrentUser = async (decoded, { _token, _type }) => {
-  return { ...decoded, roles: parseJWT({ decoded }).roles }
-}
+  return { ...decoded, roles: parseJWT({ decoded }).roles };
+};
 
 /**
  * Use requireAuth in your services to check that a user is logged in,
@@ -123,7 +123,7 @@ export const getCurrentUser = async (decoded, { _token, _type }) => {
  */
 export const requireAuth = ({ role } = {}) => {
   if (!context.currentUser) {
-    throw new AuthenticationError("You don't have permission to do that.")
+    throw new AuthenticationError("You don't have permission to do that.");
   }
 
   if (
@@ -131,7 +131,7 @@ export const requireAuth = ({ role } = {}) => {
     typeof role === 'string' &&
     !context.currentUser.roles?.includes(role)
   ) {
-    throw new ForbiddenError("You don't have access to do that.")
+    throw new ForbiddenError("You don't have access to do that.");
   }
 
   if (
@@ -139,6 +139,6 @@ export const requireAuth = ({ role } = {}) => {
     Array.isArray(role) &&
     !context.currentUser.roles?.some((r) => role.includes(r))
   ) {
-    throw new ForbiddenError("You don't have access to do that.")
+    throw new ForbiddenError("You don't have access to do that.");
   }
-}
+};

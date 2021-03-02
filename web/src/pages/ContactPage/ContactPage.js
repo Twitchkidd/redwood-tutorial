@@ -6,10 +6,10 @@ import {
   FieldError,
   Label,
   FormError,
-} from '@redwoodjs/forms'
-import { Flash, useFlash, useMutation } from '@redwoodjs/web'
-import { useForm } from 'react-hook-form'
-import BlogLayout from 'src/layouts/BlogLayout'
+} from '@redwoodjs/forms';
+import { Flash, useFlash, useMutation } from '@redwoodjs/web';
+import { useForm } from 'react-hook-form';
+import BlogLayout from 'src/layouts/BlogLayout';
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {
@@ -17,25 +17,25 @@ const CREATE_CONTACT = gql`
       id
     }
   }
-`
+`;
 
 const ContactPage = () => {
-  const formMethods = useForm()
-  const { addMessage } = useFlash()
+  const formMethods = useForm();
+  const { addMessage } = useFlash();
 
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
       addMessage('Thank you for your submission!', {
         style: { backgroundColor: 'green', color: 'white', padding: '1rem' },
-      })
-      formMethods.reset()
+      });
+      formMethods.reset();
     },
-  })
+  });
 
   const onSubmit = (data) => {
-    create({ variables: { input: data } })
-    console.log(data)
-  }
+    create({ variables: { input: data } });
+    console.log(data);
+  };
 
   return (
     <BlogLayout>
@@ -107,7 +107,7 @@ const ContactPage = () => {
         </Submit>
       </Form>
     </BlogLayout>
-  )
-}
+  );
+};
 
-export default ContactPage
+export default ContactPage;

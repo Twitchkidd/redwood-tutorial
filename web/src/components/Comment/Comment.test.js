@@ -1,11 +1,11 @@
 import { render } from '@redwoodjs/testing';
 
-import BlogPostPage from './BlogPostPage';
+import Comment from './Comment';
 
-describe('BlogPostPage', () => {
+describe('Comment', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<BlogPostPage />);
+      render(<Comment />);
     }).not.toThrow();
   });
 });

@@ -1,5 +1,5 @@
-import { Link, routes } from '@redwoodjs/router'
-import BlogLayout from 'src/layouts/BlogLayout'
+import { Link, routes } from '@redwoodjs/router';
+import BlogLayout from 'src/layouts/BlogLayout';
 
 const AboutPage = () => {
   return (
@@ -9,7 +9,7 @@ const AboutPage = () => {
         works, ye mighty, and despair!
       </p>
     </BlogLayout>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

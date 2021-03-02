@@ -1,5 +1,5 @@
-import { useMutation, useFlash } from '@redwoodjs/web'
-import { Link, routes } from '@redwoodjs/router'
+import { useMutation, useFlash } from '@redwoodjs/web';
+import { Link, routes } from '@redwoodjs/router';
 
 const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: Int!) {
@@ -7,47 +7,47 @@ const DELETE_POST_MUTATION = gql`
       id
     }
   }
-`
+`;
 
-const MAX_STRING_LENGTH = 150
+const MAX_STRING_LENGTH = 150;
 
 const truncate = (text) => {
-  let output = text
+  let output = text;
   if (text && text.length > MAX_STRING_LENGTH) {
-    output = output.substring(0, MAX_STRING_LENGTH) + '...'
+    output = output.substring(0, MAX_STRING_LENGTH) + '...';
   }
-  return output
-}
+  return output;
+};
 
 const jsonTruncate = (obj) => {
-  return truncate(JSON.stringify(obj, null, 2))
-}
+  return truncate(JSON.stringify(obj, null, 2));
+};
 
 const timeTag = (datetime) => {
   return (
     <time dateTime={datetime} title={datetime}>
       {new Date(datetime).toUTCString()}
     </time>
-  )
-}
+  );
+};
 
 const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
-}
+  return <input type="checkbox" checked={checked} disabled />;
+};
 
 const PostsList = ({ posts }) => {
-  const { addMessage } = useFlash()
+  const { addMessage } = useFlash();
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
-      addMessage('Post deleted.', { classes: 'rw-flash-success' })
+      addMessage('Post deleted.', { classes: 'rw-flash-success' });
     },
-  })
+  });
 
   const onDeleteClick = (id) => {
     if (confirm('Are you sure you want to delete post ' + id + '?')) {
-      deletePost({ variables: { id }, refetchQueries: ['POSTS'] })
+      deletePost({ variables: { id }, refetchQueries: ['POSTS'] });
     }
-  }
+  };
 
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
@@ -99,7 +99,7 @@ const PostsList = ({ posts }) => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default PostsList
+export default PostsList;

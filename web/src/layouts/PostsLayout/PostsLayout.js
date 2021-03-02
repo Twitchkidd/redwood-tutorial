@@ -1,5 +1,5 @@
-import { Link, routes } from '@redwoodjs/router'
-import { Flash } from '@redwoodjs/web'
+import { Link, routes } from '@redwoodjs/router';
+import { Flash } from '@redwoodjs/web';
 
 const PostsLayout = (props) => {
   return (
@@ -17,7 +17,7 @@ const PostsLayout = (props) => {
       </header>
       <main className="rw-main">{props.children}</main>
     </div>
-  )
-}
+  );
+};
 
-export default PostsLayout
+export default PostsLayout;

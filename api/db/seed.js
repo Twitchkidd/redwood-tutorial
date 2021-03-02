@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-const { PrismaClient } = require('@prisma/client')
-const dotenv = require('dotenv')
+const { PrismaClient } = require('@prisma/client');
+const dotenv = require('dotenv');
 
-dotenv.config()
-const db = new PrismaClient()
+dotenv.config();
+const db = new PrismaClient();
 
 const POSTS = [
   {
@@ -21,17 +21,17 @@ const POSTS = [
     body:
       'Meh waistcoat succulents umami asymmetrical, hoodie post-ironic paleo chillwave tote bag. Trust fund kitsch waistcoat vape, cray offal gochujang food truck cloud bread enamel pin forage. Roof party chambray ugh occupy fam stumptown. Dreamcatcher tousled snackwave, typewriter lyft unicorn pabst portland blue bottle locavore squid PBR&B tattooed.',
   },
-]
+];
 
 async function main() {
-  const existing = await db.post.findMany()
+  const existing = await db.post.findMany();
 
   for (let i = 0; i < POSTS.length; i++) {
-    const post = POSTS[i]
+    const post = POSTS[i];
 
     // only inserts a post if one with the exact same title doesn't already exist
     if (!existing.find((ex) => ex.title === post.title)) {
-      await db.post.create({ data: post })
+      await db.post.create({ data: post });
     }
   }
 }
@@ -39,5 +39,5 @@ async function main() {
 main()
   .catch((e) => console.error(e))
   .finally(async () => {
-    await db.$disconnect()
-  })
+    await db.$disconnect();
+  });

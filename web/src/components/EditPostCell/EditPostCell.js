@@ -1,6 +1,6 @@
-import { useMutation, useFlash } from '@redwoodjs/web'
-import { navigate, routes } from '@redwoodjs/router'
-import PostForm from 'src/components/PostForm'
+import { useMutation, useFlash } from '@redwoodjs/web';
+import { navigate, routes } from '@redwoodjs/router';
+import PostForm from 'src/components/PostForm';
 
 export const QUERY = gql`
   query FIND_POST_BY_ID($id: Int!) {
@@ -11,7 +11,7 @@ export const QUERY = gql`
       createdAt
     }
   }
-`
+`;
 const UPDATE_POST_MUTATION = gql`
   mutation UpdatePostMutation($id: Int!, $input: UpdatePostInput!) {
     updatePost(id: $id, input: $input) {
@@ -21,22 +21,22 @@ const UPDATE_POST_MUTATION = gql`
       createdAt
     }
   }
-`
+`;
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div>Loading...</div>;
 
 export const Success = ({ post }) => {
-  const { addMessage } = useFlash()
+  const { addMessage } = useFlash();
   const [updatePost, { loading, error }] = useMutation(UPDATE_POST_MUTATION, {
     onCompleted: () => {
-      navigate(routes.posts())
-      addMessage('Post updated.', { classes: 'rw-flash-success' })
+      navigate(routes.posts());
+      addMessage('Post updated.', { classes: 'rw-flash-success' });
     },
-  })
+  });
 
   const onSave = (input, id) => {
-    updatePost({ variables: { id, input } })
-  }
+    updatePost({ variables: { id, input } });
+  };
 
   return (
     <div className="rw-segment">
@@ -47,5 +47,5 @@ export const Success = ({ post }) => {
         <PostForm post={post} onSave={onSave} error={error} loading={loading} />
       </div>
     </div>
-  )
-}
+  );
+};
